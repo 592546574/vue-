@@ -12,14 +12,11 @@
   import Header from './components/Header';
   import List from './components/List';
   import Footer from './components/Footer';
+  import storageUtils from './utils/storageUtils'
     export default {
       data(){
        return {
-         todos:[
-           {complete:true,title:'吃饭'},
-           {complete:false,title:'睡觉'},
-           {complete:false,title:'打豆豆'}
-         ]
+         todos: storageUtils.readTodos()
        }
       },
       methods:{
@@ -38,6 +35,17 @@
         //清除已完成任务
         clearCompleteTodos(){
           this.todos = this.todos.filter(todo => !todo.complete)
+        }
+      },
+      watch:{
+        todos:{
+          //深度监视
+          deep:true,
+          handler:function(value){//todos最新值
+            //将todos保存到local中
+            // localstorage.setItem('todos_key',JSON.stringify(this.todos))
+            storageUtils.saveTodos(value)
+          }
         }
       },
       components:{
