@@ -2,7 +2,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <Header/>
-      <List/>
+      <List :todos="todos"/>
       <Footer/>
     </div>
   </div>
@@ -13,7 +13,15 @@
   import List from './components/List';
   import Footer from './components/Footer';
     export default {
-
+      data(){
+       return {
+         todos:[
+           {complete:true,title:'吃饭'},
+           {complete:false,title:'睡觉'},
+           {complete:false,title:'打豆豆'}
+         ]
+       }
+      },
       components:{
           Header,
           List,

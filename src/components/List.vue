@@ -1,13 +1,14 @@
 <template>
   <ul class="todo-main">
-    <Item/>
-    <Item/>
+    <Item v-for="(todo,index) in todos" :key="index" :todo="todo"/>
   </ul>
 </template>
 
 <script>
   import Item from './Item';
     export default {
+      //声明接收App传过来的数据
+      props:['todos'],
         components:{
           Item
         }
