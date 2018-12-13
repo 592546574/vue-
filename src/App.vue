@@ -1,7 +1,7 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <Header/>
+      <Header :addTodo="addTodo"/>
       <List :todos="todos"/>
       <Footer/>
     </div>
@@ -21,6 +21,11 @@
            {complete:false,title:'打豆豆'}
          ]
        }
+      },
+      methods:{
+        addTodo(todo){
+          this.todos.unshift(todo)
+        }
       },
       components:{
           Header,
