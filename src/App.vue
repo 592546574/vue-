@@ -2,7 +2,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <Header :addTodo="addTodo"/>
-      <List :todos="todos"/>
+      <List :todos="todos" :deleteTodo="deleteTodo"/>
       <Footer/>
     </div>
   </div>
@@ -25,6 +25,10 @@
       methods:{
         addTodo(todo){
           this.todos.unshift(todo)
+        },
+        //删除指定的todo
+        deleteTodo(index){
+          this.todos.splice(index,1)
         }
       },
       components:{
